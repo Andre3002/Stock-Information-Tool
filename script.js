@@ -37,16 +37,23 @@ function displayProfile(responseJson) {
     const ticker = responseJson.ticker; // e.g. AMZN
     const marketCap = formatter.format(responseJson.marketCapitalization);// Change to integer and format with fewer zeros
     const exchange = responseJson.exchange;
-    const industry = responseJson.industry;
+    const industry = responseJson.finnhubIndustry;
     const logo = responseJson.logo;
+    const url = responseJson.weburl;
 
-    $("#overview-ul").empty();
-    $("#overview-ul").append(`<li> Logo: ${logo} </li>`);
+    console.log(responseJson);
+    
+    // $("#overview").replaceWith('<img src=${logo}</img>');
+    // $("#overview-ul").append(`<li> Logo: ${logo} </li>`);
+    
+    $("#overview-ul").empty();    
     $("#overview-ul").append(`<li> Company Name: ${name} </li>`);
     $("#overview-ul").append(`<li> Ticker Symbol: ${ticker} </li>`);
     $("#overview-ul").append(`<li> Market Cap: ${marketCap} (MM) </li>`);
     $("#overview-ul").append(`<li> Exchange: ${exchange} </li>`);
     $("#overview-ul").append(`<li> Industry: ${industry} </li>`);
+    $("#overview-ul").append(`<li> Website: ${url} </li>`);
+
 
     $('#results').removeClass('hidden');
 }
