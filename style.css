@@ -1,0 +1,93 @@
+
+/* General Styles */
+
+* {
+  padding: 10px;
+  font-family: 'Amatic SC', cursive;
+
+}
+
+header h1 {
+  margin: 0 10px;
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
+  font-size: 65px;
+}
+
+ul{
+  text-align: left;
+}
+
+div{
+  text-align: center;
+}
+
+main {
+  margin-top: 60px;
+  text-align:center;
+}
+
+main form label {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+main h1 {
+  margin: 0 10px;
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
+  font-size: 65px;
+}
+
+main h2 {
+  margin: 0 10px;
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
+}
+
+main p {
+  font-family: 'Roboto', sans-serif;
+  margin-top: 0;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.bg-primary {
+  background-color: #775f47;
+}
+
+.group img {
+  width: 100%;
+}
+
+/* Groups & Items  (Mobile First) */
+
+.group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
+}
+
+.item {
+  flex: 1;
+  margin: 10px;
+}
+
+.item-double {
+  flex: 2;
+  margin: 10px;
+}
+
+/* Groups & Items  (Desktop) */
+
+@media all and (min-width: 800px) {
+  section {
+    padding: 0 10%;
+  }
+
+  .group {
+    flex-direction: row;
+  }
+}
