@@ -18,7 +18,7 @@ function getStockPeers(stock) {
 }
 
 function getStockNews(stock) {
-    fetch('https://finnhub.io/api/v1/company-news?symbol=' + stock + '&from=2020-05-01&to=2020-05-02' + '&token=' + apiKey)
+    fetch('https://finnhub.io/api/v1/company-news?symbol=' + stock + '&from=2020-08-01&to=2020-08-30' + '&token=' + apiKey)
         .then(response => response.json())
         // .then(responseJson3 => console.log(responseJson3))
         .then(responseJson3 => displayNews(responseJson3))
@@ -36,36 +36,23 @@ function displayProfile(responseJson) {
     const name = responseJson.name; // e.g. Amazon, Inc
     const ticker = responseJson.ticker; // e.g. AMZN
     const marketCap = formatter.format(responseJson.marketCapitalization);// Change to integer and format with fewer zeros
+    const exchange = responseJson.exchange;
+    const industry = responseJson.industry;
+    const logo = responseJson.logo;
 
     $("#overview-ul").empty();
+    $("#overview-ul").append(`<li> Logo: ${logo} </li>`);
     $("#overview-ul").append(`<li> Company Name: ${name} </li>`);
     $("#overview-ul").append(`<li> Ticker Symbol: ${ticker} </li>`);
     $("#overview-ul").append(`<li> Market Cap: ${marketCap} (MM) </li>`);
+    $("#overview-ul").append(`<li> Exchange: ${exchange} </li>`);
+    $("#overview-ul").append(`<li> Industry: ${industry} </li>`);
 
     $('#results').removeClass('hidden');
 }
 
-// Creating test values for valuation function
-let responseJson4Test = 5000;
-let marketCapTest = 150000;
-// Valuation function
-function valuation(responseJson4Test, marketCapTest) {
-    //console.log(responseJson4Test);
-    //console.log(marketCapTest);
-    $("p").empty();
-    $("p").append(`This is the valuation.  Compared to market cap ...`);
-
-
-
-
-}
-
 function displayPeers(responseJson2) {
-
-    //$("#peers-ul").append(`<li> Test Peers <br> </li>`);
-    console.log(responseJson2);
-    //$("#peers-ul").append(`<li> ${responseJson2[0]} <br> </li>`);  //Doenst work bc the output of promise is nothing for console logs!!!  Need to comment out console logs.
- 
+    
 
     $("#peers-ul").empty();
     if (responseJson2.code == 404) {
@@ -89,7 +76,6 @@ function displayNews(responseJson3) {
             $("#news-ul").append(`<li> ${responseJson3[i].headline} --> ${responseJson3[i].url} <br> </li>`)
         }
     }
-
 }
 
 function watchForm() {
@@ -98,8 +84,7 @@ function watchForm() {
         const stock = $('#js-stock').val();
         const responseJson = getStockProfile(stock);
         const responseJson2 = getStockPeers(stock);
-        const responseJson3 = getStockNews(stock); //Need to enable to test/use function
-        valuation(responseJson4Test, marketCapTest); //To test valuation function
+        const responseJson3 = getStockNews(stock);         
     });
 }
 
