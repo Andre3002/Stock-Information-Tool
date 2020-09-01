@@ -48,6 +48,7 @@ main h2 {
 main p {
   font-family: 'Roboto', sans-serif;
   margin-top: 0;
+  text-align: left;
 }
 
 .hidden {
