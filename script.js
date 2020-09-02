@@ -42,25 +42,27 @@ function displayProfile(responseJson) {
     const url = responseJson.weburl;
 
     console.log(responseJson);
-    
+
     // $("#overview").replaceWith('<img src=${logo}</img>');
     // $("#overview-ul").append(`<li> Logo: ${logo} </li>`);
-    
-    $("#overview-ul").empty();    
-    $("#overview-ul").append(`<li> Company Name: ${name} </li>`);
-    $("#overview-ul").append(`<li> Ticker Symbol: ${ticker} </li>`);
-    $("#overview-ul").append(`<li> Market Cap: ${marketCap} (MM) </li>`);
-    $("#overview-ul").append(`<li> Exchange: ${exchange} </li>`);
-    $("#overview-ul").append(`<li> Industry: ${industry} </li>`);
-    $("#overview-ul").append(`<li> Website: ${url} </li>`);
 
+    $("#overview-ul").empty();
+    console.log(responseJson.code);
 
-    $('#results').removeClass('hidden');
+    if (name === undefined) {
+        $("#overview-ul").append(`<h2> Stock symbol is not found. Please try again. </h2>`)
+    } else {
+        $("#overview-ul").append(`<li> Company Name: ${name} </li>`);
+        $("#overview-ul").append(`<li> Ticker Symbol: ${ticker} </li>`);
+        $("#overview-ul").append(`<li> Market Cap: ${marketCap} (MM) </li>`);
+        $("#overview-ul").append(`<li> Exchange: ${exchange} </li>`);
+        $("#overview-ul").append(`<li> Industry: ${industry} </li>`);
+        $("#overview-ul").append(`<li> Website: ${url} </li>`);
+        $('#results').removeClass('hidden');
+    }
 }
 
 function displayPeers(responseJson2) {
-    
-
     $("#peers-ul").empty();
     if (responseJson2.code == 404) {
         $("#peers-ul").append(`<h2> Stock symbol is not found. Please try again. </h2>`)
@@ -71,10 +73,9 @@ function displayPeers(responseJson2) {
     }
 }
 
-
 function displayNews(responseJson3) {
     console.log(responseJson3);
-    
+
     $("#news-ul").empty();
     if (responseJson3.code == 404) {
         $("#news-ul").append(`<h2> Stock symbol is not found. Please try again. </h2>`)
@@ -91,7 +92,7 @@ function watchForm() {
         const stock = $('#js-stock').val();
         const responseJson = getStockProfile(stock);
         const responseJson2 = getStockPeers(stock);
-        const responseJson3 = getStockNews(stock);         
+        const responseJson3 = getStockNews(stock);
     });
 }
 
