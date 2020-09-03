@@ -16,8 +16,24 @@ header h1 {
   color: whitesmoke;
 }
 
+
 ul{
   text-align: left;
+}
+
+ul#peers-ul li {
+  margin-top: -10px;
+}
+
+ul#peers-ul{
+  text-align: left;
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+}
+
+ul#overview-ul li {
+  margin-top: -10px;
 }
 
 div h2 {
