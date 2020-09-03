@@ -38,20 +38,13 @@ function displayProfile(responseJson) {
     const marketCap = formatter.format(responseJson.marketCapitalization);// Change to integer and format with fewer zeros
     const exchange = responseJson.exchange;
     const industry = responseJson.finnhubIndustry;
-    const logo = responseJson.logo;
+    //const logo = responseJson.logo;
     const url = responseJson.weburl;
-
-    console.log(responseJson);
-
-    // $("#overview").replaceWith('<img src=${logo}</img>');
-    // $("#overview-ul").append(`<li> Logo: ${logo} </li>`);
-
-    $("#overview-ul").empty();
-    console.log(responseJson.code);
-
+    
     if (name === undefined) {
-        $("#overview-ul").append(`<h2> Stock symbol is not found. Please try again. </h2>`)
+        $("div#greeting").append(`<h2> Stock symbol is not found. Please try again. </h2>`)
     } else {
+        $("#overview-ul").empty();
         $("#overview-ul").append(`<li> Company Name: ${name} </li>`);
         $("#overview-ul").append(`<li> Ticker Symbol: ${ticker} </li>`);
         $("#overview-ul").append(`<li> Market Cap: ${marketCap} (MM) </li>`);
@@ -64,25 +57,15 @@ function displayProfile(responseJson) {
 
 function displayPeers(responseJson2) {
     $("#peers-ul").empty();
-    if (responseJson2.code == 404) {
-        $("#peers-ul").append(`<h2> Stock symbol is not found. Please try again. </h2>`)
-    } else {
-        for (let i = 1; i < 7; i++) {
-            $("#peers-ul").append(`<li> ${responseJson2[i]} <br> </li>`)
-        }
+    for (let i = 1; i < 7; i++) {
+        $("#peers-ul").append(`<li> ${responseJson2[i]} <br> </li>`)
     }
 }
 
 function displayNews(responseJson3) {
-    console.log(responseJson3);
-
     $("#news-ul").empty();
-    if (responseJson3.code == 404) {
-        $("#news-ul").append(`<h2> Stock symbol is not found. Please try again. </h2>`)
-    } else {
-        for (let i = 0; i < 5; i++) {
-            $("#news-ul").append(`<li> ${responseJson3[i].headline} --> ${responseJson3[i].url} <br> </li>`)
-        }
+    for (let i = 0; i < 5; i++) {
+        $("#news-ul").append(`<li> ${responseJson3[i].headline} --> ${responseJson3[i].url} <br> </li>`)
     }
 }
 

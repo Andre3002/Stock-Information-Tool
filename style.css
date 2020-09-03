@@ -3,15 +3,18 @@
 
 * {
   padding: 10px;
-  font-family: 'Amatic SC', cursive;
+  font-family: Helvetica, Arial, sans-serif;
 
 }
 
 header h1 {
-  margin: 0 10px;
+  margin: 0px;
   text-align: center;
-  font-family: 'Amatic SC', cursive;
-  font-size: 65px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 55px;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTFM-ImciBPCnyRvwoGX2ybpLQKcrnEt2LT-A&usqp=CAU");
+  height: 130px;
+  color: whitesmoke;
 }
 
 ul{
@@ -35,18 +38,18 @@ main form label {
 main h1 {
   margin: 0 10px;
   text-align: center;
-  font-family: 'Amatic SC', cursive;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 65px;
 }
 
 main h2 {
   margin: 0 10px;
   text-align: center;
-  font-family: 'Amatic SC', cursive;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 main p {
-  font-family: 'Roboto', sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   margin-top: 0;
   text-align: left;
 }
