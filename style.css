@@ -4,7 +4,6 @@
 * {
   padding: 10px;
   font-family: Helvetica, Arial, sans-serif;
-
 }
 
 header h1 {
@@ -21,17 +20,17 @@ ul{
   text-align: left;
 }
 
-div{
+div h2 {
   text-align: center;
+  font-size: 22px;
 }
 
 main {
-  margin-top: 60px;
   text-align:center;
 }
 
 main form label {
-  font-size: 40px;
+  font-size: 25px;
   margin-bottom: 10px;
 }
 
@@ -52,6 +51,10 @@ main p {
   font-family: Helvetica, Arial, sans-serif;
   margin-top: 0;
   text-align: left;
+}
+
+.standout {
+  background-color: lightgrey;
 }
 
 .hidden {
