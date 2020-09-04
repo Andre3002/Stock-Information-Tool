@@ -16,7 +16,6 @@ header h1 {
   color: whitesmoke;
 }
 
-
 ul{
   text-align: left;
 }
@@ -75,14 +74,6 @@ main p {
 
 .hidden {
   visibility: hidden;
-}
-
-.bg-primary {
-  background-color: #775f47;
-}
-
-.group img {
-  width: 100%;
 }
 
 /* Groups & Items  (Mobile First) */

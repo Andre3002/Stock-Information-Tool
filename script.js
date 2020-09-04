@@ -12,7 +12,6 @@ function getStockProfile(stock) {
 function getStockPeers(stock) {
     fetch('https://finnhub.io/api/v1/stock/peers?symbol=' + stock + '&token=' + apiKey)
         .then(response => response.json())
-        // .then(responseJson2 => console.log(responseJson2)) 
         .then(responseJson2 => displayPeers(responseJson2))
         .catch(error => alert('Something went wrong. Try again later.'));
 }
@@ -20,7 +19,6 @@ function getStockPeers(stock) {
 function getStockNews(stock) {
     fetch('https://finnhub.io/api/v1/company-news?symbol=' + stock + '&from=2020-08-01&to=2020-08-30' + '&token=' + apiKey)
         .then(response => response.json())
-        // .then(responseJson3 => console.log(responseJson3))
         .then(responseJson3 => displayNews(responseJson3))
         .catch(error => alert('Something went wrong. Try again later.'));
 }
@@ -31,6 +29,7 @@ const formatter = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2
 })
 
+// function to display stock's profile information
 function displayProfile(responseJson) {
 
     const name = responseJson.name; // e.g. Amazon, Inc
@@ -38,7 +37,6 @@ function displayProfile(responseJson) {
     const marketCap = formatter.format(responseJson.marketCapitalization);// Change to integer and format with fewer zeros
     const exchange = responseJson.exchange;
     const industry = responseJson.finnhubIndustry;
-    //const logo = responseJson.logo;
     const url = responseJson.weburl;
     
     if (name === undefined) {
@@ -55,6 +53,7 @@ function displayProfile(responseJson) {
     }
 }
 
+// function to display stock's peers
 function displayPeers(responseJson2) {
     $("#peers-ul").empty();
     for (let i = 1; i < 7; i++) {
@@ -62,6 +61,7 @@ function displayPeers(responseJson2) {
     }
 }
 
+// function to display news articles
 function displayNews(responseJson3) {
     $("#news-ul").empty();
     for (let i = 0; i < 5; i++) {
@@ -73,7 +73,7 @@ function watchForm() {
     $('form').submit(event => {
         event.preventDefault();
         const stock = $('#js-stock').val();
-        const responseJson = getStockProfile(stock);
+        const responseJson = getStockProfile(stock); 
         const responseJson2 = getStockPeers(stock);
         const responseJson3 = getStockNews(stock);
     });
