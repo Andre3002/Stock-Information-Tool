@@ -1,4 +1,3 @@
-
 /* General Styles */
 
 * {
@@ -16,7 +15,7 @@ header h1 {
   color: whitesmoke;
 }
 
-ul{
+ul {
   text-align: left;
 }
 
@@ -24,7 +23,7 @@ ul#peers-ul li {
   margin-top: -10px;
 }
 
-ul#peers-ul{
+ul#peers-ul {
   text-align: left;
   columns: 2;
   -webkit-columns: 2;
@@ -41,7 +40,7 @@ div h2 {
 }
 
 main {
-  text-align:center;
+  text-align: center;
 }
 
 main form label {

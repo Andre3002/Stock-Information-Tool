@@ -38,7 +38,7 @@ function displayProfile(responseJson) {
     const exchange = responseJson.exchange;
     const industry = responseJson.finnhubIndustry;
     const url = responseJson.weburl;
-    
+
     if (name === undefined) {
         $("div#greeting").append(`<h2> Stock symbol is not found. Please try again. </h2>`)
     } else {
@@ -73,7 +73,7 @@ function watchForm() {
     $('form').submit(event => {
         event.preventDefault();
         const stock = $('#js-stock').val();
-        const responseJson = getStockProfile(stock); 
+        const responseJson = getStockProfile(stock);
         const responseJson2 = getStockPeers(stock);
         const responseJson3 = getStockNews(stock);
     });
