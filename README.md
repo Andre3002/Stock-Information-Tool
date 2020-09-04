@@ -9,3 +9,5 @@ Refer to this design checklist for help.
 Responsive: The final version of your app should work on both mobile and desktop.
 Refer back to your responsiveness checklist for help.
 Accessibility: The final version of your app must follow a11y best practices.
+
+![](2020-09-03-20-26-31.png)
