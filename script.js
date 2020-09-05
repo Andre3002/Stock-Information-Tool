@@ -1,6 +1,7 @@
 'use strict';
 
 const apiKey = "bt07fnf48v6ouqftnfc0";
+const revenueMultiple = 3.16 // Industry average per Damodoran 1/2020 http://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/psdata.html
 
 function getStockProfile(stock) {
     fetch('https://finnhub.io/api/v1/stock/profile2?symbol=' + stock + '&token=' + apiKey)
@@ -23,12 +24,11 @@ function getStockNews(stock) {
         .catch(error => alert('Something went wrong. Try again later.'));
 }
 
-function getEbitda(stock){
-    fetch('https://finnhub.io/api/v1/stock/financials-reported?symbol='+stock+'&token='+apiKey)
-    .then(response=>response.json())
-    console.log(responseJson4)
-    .then(responseJson4=>displayValuation(responseJson4))
-    .catch(error=>alert('Something went wrong. Try again later.'));
+function getStockFinancials(stock) {
+    fetch('https://finnhub.io/api/v1/stock/financials-reported?symbol=' + stock + '&token=' + apiKey)
+        .then(response => response.json())
+        .then(responseJson4 => displayValuation(responseJson4))
+        .catch(error => alert('Something went wrong. Try again later.'));
 }
 
 const formatter = new Intl.NumberFormat('en-US', {
@@ -80,10 +80,11 @@ function displayNews(responseJson3) {
     }
 }
 
-// function to get valuation
-// function displayValuation(responseJson4){
+// function to display valuation
+function displayValuation(responseJson4, revenueMultiple) {
+    console.log(responseJson4);
 
-// }
+}
 
 function watchForm() {
     $('form').submit(event => {
@@ -92,7 +93,7 @@ function watchForm() {
         const responseJson = getStockProfile(stock);
         const responseJson2 = getStockPeers(stock);
         const responseJson3 = getStockNews(stock);
-        const responseJson4 = getEbitda(stock);
+        const responseJson4 = getStockFinancials(stock);
     });
 }
 
