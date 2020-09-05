@@ -1,6 +1,7 @@
 'use strict';
 
 const apiKey = "bt07fnf48v6ouqftnfc0";
+const apiKey2 = "cdfc49a4dfdc425038e75ba31503f2872d7dd883";
 
 function getStockProfile(stock) {
     fetch('https://finnhub.io/api/v1/stock/profile2?symbol=' + stock + '&token=' + apiKey)
@@ -23,7 +24,13 @@ function getStockNews(stock) {
         .catch(error => alert('Something went wrong. Try again later.'));
 }
 
-
+function getEbitda(stock){
+    fetch('https://api.tiingo.com/tiingo/fundamentals/'+stock+'/statements?token='+apiKey2+',headers=headers')
+    .then(response=>response.json())
+    console.log(responseJson4)
+    .then(responseJson4=>displayValuation(responseJson4))
+    .catch(error=>alert('Something went wrong. Try again later.'));
+}
 
 const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -65,11 +72,16 @@ function displayPeers(responseJson2) {
 
 // function to display news articles
 function displayNews(responseJson3) {
-    $("#news-ul").empty();
+    $("#news-ul").empty(); // change empty and appends to jquery .html
     for (let i = 0; i < 5; i++) {
         $("#news-ul").append(`<li> ${responseJson3[i].headline} --> ${responseJson3[i].url} <br> </li>`)
     }
 }
+
+// function to get valuation
+// function displayValuation(responseJson4){
+
+// }
 
 function watchForm() {
     $('form').submit(event => {
@@ -78,6 +90,7 @@ function watchForm() {
         const responseJson = getStockProfile(stock);
         const responseJson2 = getStockPeers(stock);
         const responseJson3 = getStockNews(stock);
+        const responseJson4 = getEbitda(stock);
     });
 }
 
