@@ -23,6 +23,8 @@ function getStockNews(stock) {
         .catch(error => alert('Something went wrong. Try again later.'));
 }
 
+
+
 const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
