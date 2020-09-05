@@ -1,7 +1,6 @@
 'use strict';
 
 const apiKey = "bt07fnf48v6ouqftnfc0";
-const apiKey2 = "cdfc49a4dfdc425038e75ba31503f2872d7dd883";
 
 function getStockProfile(stock) {
     fetch('https://finnhub.io/api/v1/stock/profile2?symbol=' + stock + '&token=' + apiKey)
@@ -25,7 +24,7 @@ function getStockNews(stock) {
 }
 
 function getEbitda(stock){
-    fetch('https://api.tiingo.com/tiingo/fundamentals/'+stock+'/statements?token='+apiKey2+',headers=headers')
+    fetch('https://finnhub.io/api/v1/stock/financials-reported?symbol='+stock+'&token='+apiKey)
     .then(response=>response.json())
     console.log(responseJson4)
     .then(responseJson4=>displayValuation(responseJson4))
