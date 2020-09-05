@@ -1,7 +1,7 @@
 'use strict';
 
 const apiKey = "bt07fnf48v6ouqftnfc0";
-const revenueMultiple = 3.16 // Industry average per Damodoran 1/2020 http://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/psdata.html
+const revenueMultiple = 3.16; // Industry average per Damodoran 1/2020 http://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/psdata.html
 
 function getStockProfile(stock) {
     fetch('https://finnhub.io/api/v1/stock/profile2?symbol=' + stock + '&token=' + apiKey)
@@ -27,7 +27,7 @@ function getStockNews(stock) {
 function getStockFinancials(stock) {
     fetch('https://finnhub.io/api/v1/stock/financials-reported?symbol=' + stock + '&token=' + apiKey)
         .then(response => response.json())
-        .then(responseJson4 => displayValuation(responseJson4))
+        .then(responseJson4 => displayValuation(responseJson4, revenueMultiple))
         .catch(error => alert('Something went wrong. Try again later.'));
 }
 
@@ -82,7 +82,16 @@ function displayNews(responseJson3) {
 
 // function to display valuation
 function displayValuation(responseJson4, revenueMultiple) {
-    console.log(responseJson4);
+    
+    // This section obtains the most recent years revenue from the object
+    const revenue = 24578000000; // Tesla's 2019 revenue as test value
+    
+    // This section calculates the valuation
+    const value = revenue * revenueMultiple;
+    
+    // This section displays our value and advice to the user
+    
+    
 
 }
 
