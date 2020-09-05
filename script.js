@@ -40,8 +40,11 @@ function displayProfile(responseJson) {
     const url = responseJson.weburl;
 
     if (name === undefined) {
-        $("div#greeting").append(`<h2> Stock symbol is not found. Please try again. </h2>`)
+        $("div#greeting").html(`<h2> Stock symbol is not found. Please try again. </h2>`)
+        $("div#greeting").removeClass('hidden');
+        $('#results').addClass('hidden');
     } else {
+        $("div#greeting").html(`<h2> Your results are below</h2>`);
         $("#overview-ul").empty();
         $("#overview-ul").append(`<li> Company Name: ${name} </li>`);
         $("#overview-ul").append(`<li> Ticker Symbol: ${ticker} </li>`);
