@@ -82,16 +82,16 @@ function displayNews(responseJson3) {
 
 // function to display valuation
 function displayValuation(responseJson4, revenueMultiple) {
-    
+
     // This section obtains the most recent years revenue from the object
     const revenue = 24578000000; // Tesla's 2019 revenue as test value
-    
+
     // This section calculates the valuation
     const value = revenue * revenueMultiple;
-    
+
     // This section displays our value and advice to the user
-    
-    
+
+
 
 }
 
