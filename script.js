@@ -76,7 +76,7 @@ function displayPeers(responseJson2) {
 function displayNews(responseJson3) {
     $("#news-ul").empty(); // change empty and appends to jquery .html
     for (let i = 0; i < 5; i++) {
-        $("#news-ul").append(`<li> ${responseJson3[i].headline} --> ${responseJson3[i].url} <br> </li>`)
+        $("#news-ul").append(`<li> ${responseJson3[i].headline} <br> ${responseJson3[i].url} <br> </li>`)
     }
 }
 
@@ -88,14 +88,17 @@ function displayValuation(responseJson4, revenueMultiple) {
     const revenue = 24578000000; // Tesla's 2019 revenue as test value
     console.log(responseJson4);
     
-    const revTest = responseJson4.data[0].report.ic[3].value;
+    // const revTest = responseJson4.data[0].report.ic[3].value;
+    // console.log(revTest);
+
+    const revTest = responseJson4.data[0].report.ic[3];
     console.log(revTest);
 
     // This section calculates the valuation
     let value = revenue * revenueMultiple / 1000000; // Note - we divide by 1MM to make value have same format as Market Cap
     value = formatter.format(value);// Makes format with fewer zeros - same format as market cap value in profile section
 
-    // This section displays our value and advice to the user
+    // This section displays our value and advice to the user (Future upgrades: It would be nice to pass in the market cap value to do an "if statement" comparison to provide the advice.)
     $("article#value").html(`<p> Based on the industry average revenue multiple of 3.16x, the company should be worth ${value} (MM).  If ${value} (MM) is lower than the market cap shown above, we believe the company is overvalued and you should not buy.  If ${value} (MM) is larger than the market cap, the stock is a good deal and you should consider purchasing it.  If ${value} (MM) is very close to the same value as the market cap, you should not buy or sell the stock at this time. </p>`);
 }
 
