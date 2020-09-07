@@ -84,15 +84,15 @@ function displayNews(responseJson3) {
 function displayValuation(responseJson4, revenueMultiple) {
 
     // This section obtains the most recent years revenue from the object
-    // ***************************FIX THIS:  Need to pull out revenue value from complex JSON and replace test value below ******************************
     const revenue = 24578000000; // Tesla's 2019 revenue as test value
     console.log(responseJson4);
-    
     // const revTest = responseJson4.data[0].report.ic[3].value;
-    // console.log(revTest);
+    //const revTest = responseJson4.data[1].report.ic[3];
 
-    const revTest = responseJson4.data[0].report.ic[3];
-    console.log(revTest);
+    // This section traverses the responseJson4 object to find the net income
+
+    
+
 
     // This section calculates the valuation
     let value = revenue * revenueMultiple / 1000000; // Note - we divide by 1MM to make value have same format as Market Cap
