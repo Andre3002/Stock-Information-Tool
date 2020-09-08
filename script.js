@@ -91,7 +91,7 @@ function displayValuation(responseJson4, netIncomeMultiple) {
     // const revTest = responseJson4.data[1].report.ic[3];
     console.log(responseJson4);
 
-    // This section traverses the responseJson4 object to find the net income
+    // This section traverses the responseJson4 object to find the net income 
     let netIncome = 0;
     for (let i = 0; i < responseJson4.data[1].report.ic.length; i++) {
         if (responseJson4.data[1].report.ic[i].concept == "ProfitLoss" || responseJson4.data[1].report.ic[i].concept == "NetIncomeLoss"){
