@@ -7,28 +7,28 @@ function getStockProfile(stock) {
     fetch('https://finnhub.io/api/v1/stock/profile2?symbol=' + stock + '&token=' + apiKey)
         .then(response => response.json())
         .then(responseJson => displayProfile(responseJson))
-        .catch(error => alert('Something went wrong. Try again later.'));
+        .catch(error => displayErrorMessage());
 }
 
 function getStockPeers(stock) {
     fetch('https://finnhub.io/api/v1/stock/peers?symbol=' + stock + '&token=' + apiKey)
         .then(response => response.json())
         .then(responseJson2 => displayPeers(responseJson2))
-        .catch(error => alert('Something went wrong. Try again later.'));
+        .catch(error => displayErrorMessage());
 }
 
 function getStockNews(stock) {
     fetch('https://finnhub.io/api/v1/company-news?symbol=' + stock + '&from=2020-08-01&to=2020-08-30' + '&token=' + apiKey)
         .then(response => response.json())
         .then(responseJson3 => displayNews(responseJson3))
-        .catch(error => alert('Something went wrong. Try again later.'));
+        .catch(error => displayErrorMessage());
 }
 
 function getStockFinancials(stock) {
     fetch('https://finnhub.io/api/v1/stock/financials-reported?symbol=' + stock + '&token=' + apiKey)
         .then(response => response.json())
         .then(responseJson4 => displayValuation(responseJson4, netIncomeMultiple))
-        .catch(error => alert('Something went wrong. Try again later.'));
+        .catch(error => displayErrorMessage());
 }
 
 const formatter = new Intl.NumberFormat('en-US', {
@@ -36,6 +36,10 @@ const formatter = new Intl.NumberFormat('en-US', {
     currency: 'USD',
     minimumFractionDigits: 2
 })
+
+function displayErrorMessage(){
+    $("div#greeting").html(`<h2> Stock symbol is not found. Please try again. </h2>`)
+}
 
 // function to display stock's profile information
 function displayProfile(responseJson) {
@@ -89,11 +93,11 @@ function displayValuation(responseJson4, netIncomeMultiple) {
 
     // This section traverses the responseJson4 object to find the net income
     let netIncome = 0;
-    for (let i = 0; i < PLACEHOLDER; i++) {
-
+    for (let i = 0; i < responseJson4.data[1].report.ic.length; i++) {
+        if (responseJson4.data[1].report.ic[i].concept == "ProfitLoss"){
+            netIncome=responseJson4.data[1].report.ic[i].value;
+        }
     }
-
-
 
     // This section calculates the valuation
     let value = netIncome * netIncomeMultiple / 1000000; // Note - we divide by 1MM to make value have same format as Market Cap
